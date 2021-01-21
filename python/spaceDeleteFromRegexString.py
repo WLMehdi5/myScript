@@ -1,8 +1,8 @@
 
 import glob
 import re
-
-files = glob.glob("./python/*.md")
+import os
+files = glob.glob("./python/**/*.md", recursive=True)
 for file in files:
     print(file + ":start")
     with open(file) as inFile:
@@ -14,3 +14,5 @@ for file in files:
                 else:
                     outFile.write(line)
 
+    if(" " in file ):
+        os.remove(file)
